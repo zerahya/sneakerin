@@ -1,0 +1,17 @@
+header .carousel-inner .item{
+        height : 100vh;
+}
+.carousel-caption h5{
+    font-family: 'Lobster', cursive;
+}
+.carousel-caption h2{
+    color: black;
+    font-size: 20px;
+    text-decoration: underline;
+}
+.carousel-caption h3{
+    color: black;
+    font-size: 35px;
+    padding-bottom: 200px;
+}
+}

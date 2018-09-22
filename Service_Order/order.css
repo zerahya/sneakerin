@@ -1,0 +1,79 @@
+.topnav {
+    overflow: hidden;
+    background: #6C7A89;
+  }
+  
+.topnav a {
+float: left;
+color: #f2f2f2;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+font-size: 17px;
+}
+
+.topnav a:hover {
+background-color: #ddd;
+color: rgb(83, 13, 13);
+}
+
+.topnav-right {
+float: right;
+}
+
+.judul{
+    text-align: center;
+}
+
+fieldset{
+    width: 20%;
+}
+
+h2{
+    text-align: center;
+}
+
+.isiForm{
+    text-align: justify;
+    border-radius: 5px;
+    background-color: #d3cccc;
+    padding: 20px;
+    width: 500px;
+    margin: auto;
+}
+
+form{
+    margin-left: 40px;
+}
+
+input[type=text], textarea{
+    width: 80%;
+    padding: 12px 20px;
+    border-radius: 5px;
+}
+
+input[type=text]:focus, textarea:focus {
+    background-color: lightblue;
+}
+
+button{
+    padding:12px 20px;
+    width: 90%;
+    background-color: darkgreen;
+    color:white;
+    font-weight: 900;
+}
+
+.wajib {
+    font-size: 12px;
+    font-style: italic;
+}
+
+body{
+    background-color: black;
+}
+
+.jenisservis{
+    font-style: normal;
+    font-size:18px;
+}

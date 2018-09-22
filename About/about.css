@@ -25,6 +25,7 @@ body {
 
 .topnav a.active {
   color: white;
+  background-color: brown;
 }
 
 .topnav-right {

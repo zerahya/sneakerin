@@ -2,20 +2,38 @@
 
 	if(isset($_POST['order']))
 	{
-        include('koneksi.php');
-        
-		$nama		        = $_POST['nama'];
+		include('koneksi.php');
+		session_start();
+		
+		$email		        = $_SESSION["email"];
 		$alamat		        = $_POST['alamat'];
         $phone	            = $_POST['phone'];
         $jumlah_sepatu		= $_POST['jumlah_sepatu'];
-        $service	    	= $_POST['service'];
+        $services	    	= $_POST['services'];
 		$note	        	= $_POST['note'];
+		if (strpos($services,'Premium Suede')!==false){
+			$harga=40000*$jumlah_sepatu;
+		}
+		else if(strpos($services,'One Day Service')!==false){
+			$harga=50000*$jumlah_sepatu;
+		}
+		else if(strpos($services,'Repair Suede')!==false){
+			$harga=15000*$jumlah_sepatu;
+		}
+		else if(strpos($services,'Unyellowing')!==false){
+			$harga=25000*$jumlah_sepatu;
+		}
+		else if(strpos($services,'Standard Clean')!==false){
+			$harga=20000*$jumlah_sepatu;
+		}else{
+			$harga=60000*$jumlah_sepatu;
+		}
 
-		$conn->query(" INSERT INTO pemesanan (id, nama, alamat, phone, jumlah_sepatu,services , note) VALUES(NULL, '$nama', '$alamat', '$phone', '$jumlah_sepatu',NULL, '$note')");
-		echo "mask";
-	
-		/*
-	/*	if($input)
+		$conn->query(" INSERT INTO pemesanan (id,email,alamat,harga,phone,jumlah_sepatu,services,note,isConfirmed) 
+		VALUES(NULL, '$email', '$alamat', '$harga','$phone', '$jumlah_sepatu','$services', '$note',0)");
+
+		
+		if($conn)
 		{
 			echo 'Data berhasil di tambahkan! ';
 			echo '<a href="order.php">Kembali</a>';
@@ -29,8 +47,8 @@
 	else
 	{
 		echo '<script>window.history.back()</script>';
-	}*/
-}
+	}
+
 ?>
 		
 		

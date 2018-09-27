@@ -1,8 +1,8 @@
-
 <?php 
     include 'koneksi.php';
+    session_start();
 
-    $sql = 'SELECT * FROM pemesanan';
+    $sql = 'SELECT * FROM pemesanan WHERE email=$_SESSION["email"] and isConfirmed=0';
     $data = mysqli_query($conn, $sql);
 ?>
 
@@ -63,15 +63,15 @@
                           <th scope="col">Nama</th>
                           <th scope="col">ID Pesanan</th>
                           <th scope="col">Jumlah</th>
-                          <th scope="col">Harga per item</th>
+                          <th scope="col">Jumlah Harga</th>
                         </tr>
                       </thead>
                       <tbody>
                         <?php 
                           $total = 0;
+                          echo  'Halo user ' .$_SESSION["name_user"].' , silahkan di cek kembali pesanannya !' ;
                           while($result = mysqli_fetch_assoc($data)) {
                               echo '<tr>';
-                              echo '<td>' .  $result['nama']  . '</td>';
                               echo '<td>' .  $result['id']  . '</td>';
                               echo '<td>' .  $result['jumlah_sepatu']  . '</td>';
                               echo '<td>' .  $result['harga']  . '</td>';

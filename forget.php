@@ -7,11 +7,9 @@
     require 'PHPMailer/src/PHPMailer.php';
     require 'PHPMailer/src/SMTP.php';
 	$msg = "";
-	
-	
-		$con=new mysqli('localhost', 'root', '', 'tugasbesar');
-		mysqli_connect('localhost', 'root', '', 'tugasbesar');
-	
+
+		include 'koneksi.php';
+		
 		$email = $con->real_escape_string($_GET['email']);
 		
 		if ($email == "")
@@ -32,7 +30,7 @@
             $mail->Body=" 
                     Please click on the link below:<br><br>
                     
-                    <a href='http://localhost:8181/ForgetPassword/reset.php?email=$email'>Click Here</a>
+                    <a href='https://kakuna.rapidplex.com:2083/cpsess7554041069/frontend/paper_lantern/filemanager/confirm.php?email=$email&token=$token'>Click Mer</a>
                 ";
 
                 if ($mail->send())

@@ -1,4 +1,13 @@
-	<!DOCTYPE html>
+<?php
+	
+		session_start();
+		//session_destroy();
+
+	
+		
+	?>
+
+<!DOCTYPE html>
 	<html lang="zxx" class="no-js">
 	<head>
 		<!-- Mobile Specific Meta -->
@@ -14,7 +23,7 @@
 		<!-- meta character set -->
 		<meta charset="UTF-8">
 		<!-- Site Title -->
-		<title>Plumber</title>
+		<title>Sneaker.in</title>
 
 		<link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
 			<!--
@@ -34,6 +43,108 @@
 			<link rel="stylesheet" href="css/service.css">
 		</head>
 		<body>
+			
+	<!-- Site Title -->
+	<?php 
+		include 'koneksi.php';
+		if(isset($_SESSION['email']))
+		{
+	  $emailpemesanan=$_SESSION["email"];
+		$sql = $con->query("select * from pemesanan where email='$emailpemesanan' and isConfirmed=0");
+		}
+		//$sql = conn->query('SELECT * FROM pemesanan WHERE email=$_SESSION["email"] and isConfirmed=0');
+    //$data = mysqli_query($conn, $sql);
+	?>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css\bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>Document</title>
+
+    <div class="container">
+
+        <!-- Button trigger modal -->
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+              <div class="order-section">
+                  <div class="status-section">
+                    Status Pemesanan
+                  </div>
+
+                  <div class="desc-section">
+                      <ul>
+                          <li>Kurir Sedang dalam perjalanan menuju ke lokasi anda</li>
+                          <li>Siapkan sepatu yang ingin di cuci / perbaiki </li>
+                          <li>Siapkan Uang sesuai dengan jumlah yang tertera</li>
+                          <li>apabila anda tidak berada di lokasi mohon untuk menitipkan uang dan sepatu anda.</li>
+                          <li>pembatalan tidak dapat dilakukan selama proses transaksi berlangsung</li>
+                      </ul>
+                  </div>
+
+                  <div class="rincian-title">
+                      Rincian Pemesanan
+                  </div>
+
+                  <div class="rincian-section">
+                    <table class="table">
+                      <thead>
+                        <tr>
+													<th scope="col">ID Pesanan</th>
+													<th scope="col">Nama</th>
+                          <th scope="col">Jumlah</th>
+                          <th scope="col">Jumlah Harga</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <?php 
+                          $total = 0;
+                          echo  'Halo user ' .$_SESSION["email"].' , silahkan di cek kembali pesanannya !' ;
+                          while($result = mysqli_fetch_assoc($sql)) {
+                              echo '<tr>';
+															echo '<td>' .  $result['id']  . '</td>';
+															echo '<td>' .  $result['services']  . '</td>';
+                              echo '<td>' .  $result['jumlah_sepatu']  . '</td>';
+                              echo '<td>' .  $result['harga']  . '</td>';
+                              $total = $result['harga'] + $total;
+                              echo '</tr>';
+
+                          }
+                        ?>
+                      </tbody>
+                    </table>
+                    <b>Total Harga</b> : <p><?php echo $total?></p>
+                  </div>
+                  
+
+              </div>
+          </div>
+          <div class="modal-footer">
+                  <div class="button-section float-right">
+									<a href="deleteorder.php" class="btn btn-success">Hapus Semua</a>
+     							<a href="index.php" class="btn btn-danger">Batalkan</a>
+                  <a href="konfirmasi.php" class="btn btn-success">Konfirmasi</a>
+                  </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+		</div>
+
+
 
 		  <header id="header" id="home">
 		    <div class="container">
@@ -44,16 +155,33 @@
 			      <nav id="nav-menu-container">
 			        <ul class="nav-menu">
 			          <li class="menu-active"><a href="#home">Home</a></li>
-			          <li><a href="#service">Services</a></li>
+			          <li><a href="#service">Service</a></li>
 			          <li><a href="#feature">Gallery</a></li>
 			          <li><a href="#testimonial">Testimonial</a></li>
-			          <li><a href="#contact">About</a></li>
-			          <li class="menu-has-children"><a href="">Pages</a>
-			            <ul>
-			              <li><a href="generic.html">Generic</a></li>
-			              <li><a href="elements.html">Elements</a></li>
+								<li><a href="#contact">About</a></li>
+								<?php 
+								if(isset($_SESSION['email']) &&  !empty($_SESSION['email']))
+								{
+								?>
+     							<button type="button" id="konfirmasi_pemesanan" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+									 
+									<div >konfirmasi Pesanan</div></button>
+									<li class="menu-has-children"><a href="tampilprofile.php"  id="profile">Profile</a>	
+									<ul>	
+    						
+								<?php }else{ ?>
+									<button type="button" id="konfirmasi_pemesanan" class="btn btn-primary" style="display:none;" data-toggle="modal" data-target="#exampleModal">
+      						<div >konfirmasi Pesanan</div>
+    							</button>
+			         	 
+			            
+									<li class="menu-has-children"><a href="tampilprofile.php" style="display:none;" id="profile">Profile</a>	
+									<ul>	
+									<?php } ?>
+									<li><a href="editprofile.php">Edit Profile</a></li>
+										<li><a href="logout.php">Logout</a></li>
 			            </ul>
-			          </li>
+								</li>
 			        </ul>
 			      </nav><!-- #nav-menu-container -->
 		    	</div>
@@ -67,8 +195,16 @@
 				<div class="container">
 					<div class="row fullscreen d-flex align-items-center justify-content-start">
 						<div class="banner-content col-lg-9 col-md-12">
-								<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-							<a href="login.php" class="primary-btn text-uppercase">Login Sekarang</a>
+								<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+							
+
+							<?php 
+								if(isset($_SESSION['email']) &&  !empty($_SESSION['email']))
+								{?>
+							
+								<?php 	}else {?>
+									<a href="login.php" class="primary-btn text-uppercase">Login Sekarang</a>
+									<?php 	}?>
 						</div>											
 					</div>
 			</section>
@@ -424,6 +560,12 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 				</div>
 			</footer>
 			<!-- End footer Area -->
+			
+  <script>
+    $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').trigger('focus')
+    });
+  </script>
 
 			<script src="js/vendor/jquery-2.2.4.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

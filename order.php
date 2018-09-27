@@ -42,35 +42,22 @@
 
     </head>
     <body>
-
-        <div class="topnav">
-            <a href><img src="../About/yulita.png"alt="SEPATU" width="120" height="20"></a>
-            <div class="topnav-right">
-                <a href="#Home">Home</a>
-                <a href="service.php">Services</a>
-                <a href="#Gallery">Gallery</a>
-                <a href="#Testimonies">Testimonies</a>
-                <a href="../About/about.php">About</a>
-            </div>
-        </div>
-
+        <a href="index.php"><button style="float:right; color:white; width:5%; align:center;">HOME</button></a>
+        <br><br><br><br>
         <div class="judul">
-            <img src="Logo Sneaker.png">
+            <img src="img/Logo Sneakre.png">
         </div>
         <div class="isiForm">
             <h2>Form Order</h2>
             <form action="order-proses.php" method="POST">
-                Nama Lengkap*<br>
-                <input type="text" name="nama">
-                <br><br>
                 Alamat Lengkap*<br>
-                <textarea rows="4" cols="55" name="alamat"></textarea>
+                <textarea rows="4" cols="55" name="alamat" required></textarea>
                 <br><br>
                 Nomor Handphone*<br>
-                <input type="text" name="phone">
+                <input type="text" name="phone" required>
                 <br><br>
                 Jumlah Sepatu*<br>
-                <input type="text" name="jumlah_sepatu">
+                <input type="text" name="jumlah_sepatu" required>
                 <br><br>
                 Jenis Service*<br>
                 <div class="jenisservis">
@@ -81,13 +68,13 @@
                     <p id="text5" style="display:none">Standard Clean</p>
                     <p id="text6" style="display:none">Repaint</p>
                 </div>
-                <input type="checkbox" name="service" value="Premium Suede" id="myCheck" onclick="myFunction()">Premium Suede
-                <input type="checkbox" name="service" value="One Day Service" id="myCheck2" onclick="myFunction2()">One Day Service
-                <input type="checkbox" name="service" value="Repair Service" id="myCheck3" onclick="myFunction3()">Repair Service
+                <input type="radio" name="services" value="Premium Suede" id="services" onclick="myFunction()" required>Premium Suede
+                <input type="radio" name="services" value="One Day Service" id="services" onclick="myFunction2()">One Day Service
+                <input type="radio" name="services" value="Repair Service" id="services" onclick="myFunction3()">Repair Service
                 <br>
-                <input type="checkbox" name="service" value="Unyellowing" id="myCheck4" onclick="myFunction4()">Unyellowing
-                <input type="checkbox" name="service" value="Standard Clean" id="myCheck5" onclick="myFunction5()">Standard Clean
-                <input type="checkbox" name="service" value="Repaint" id="myCheck6" onclick="myFunction6()">Repaint
+                <input type="radio" name="services" value="Unyellowing" id="services" onclick="myFunction4()">Unyellowing
+                <input type="radio" name="services" value="Standard Clean" id="services" onclick="myFunction5()">Standard Clean
+                <input type="radio" name="services" value="Repaint" id="services" onclick="myFunction6()">Repaint
                 <br><br>
                 Note<br>
                 <textarea rows="4" cols="55" name="note"></textarea>
@@ -95,7 +82,7 @@
                 <p class="wajib">*wajib diisi</p>
                 <br>
                 <button name="order" type="submit" value="submit" onclick="fn_ValForm()">Order Sekarang</button>
--
+<!---
                 <script>
                     function myFunction() {
                         var checkBox = document.getElementById("myCheck");
@@ -157,6 +144,7 @@
                         }
                     }
                 </script>
+                --->
             </form>
         </div>
     </body>

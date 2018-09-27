@@ -4,8 +4,7 @@
   exit();
  }
 
-  $con = new mysqli('localhost', 'root', '', 'tugasbesar');
-
+ include 'koneksi.php';
   
   $email = $con->real_escape_string($_GET['email']);
   $password = $con->real_escape_string($_GET['password']);

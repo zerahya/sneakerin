@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <link rel="stylesheet" href="css2/normalize.css">
-        <link rel="stylesheet" href="css2/main.css">
+        <link rel="stylesheet" href="CSS2/normalize.css">
+        <link rel="stylesheet" href="CSS2/main.css">
         <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,500' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" type="text/css" href="login.css">
 		<link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -13,14 +14,14 @@
 
         <body>
                 
-                <form id="booking-form" class="booking-form" name="form1" method="post" action="">
+                <form id="booking-form" action="cek_login.php" class="booking-form" name="form1" method="post">
                     <div align="center"><img class="logo" src="img/example_logo.png" title="Example Logo" alt="Example Logo"></div>
                     <div class="h1">Form Login</div>
                     <div id="form-content">
                         <div class="group">
                             <label for="username">Username</label>
                             <div class="addon-right">
-                                <input id="username" name="username" class="form-control" type="text">
+                                <input id="email" name="email" class="form-control" type="text">
                                 <i class="fa fa-calendar"></i>
                             </div>
                         </div>
@@ -59,7 +60,7 @@
       <input type="text" placeholder="Nama Lengkap" name="nama" required>
 
       <label for="nomor"><b>Nomor  Ponsel</b></label>
-      <input type="password" placeholder="Nomor Ponsel" name="nomorHP" required>
+      <input type="text" placeholder="Nomor Ponsel" name="nomorHP" required>
 
       <label for="psw"><b> Kata Sandi</b></label>
       <input type="password" placeholder="Password" name="password" required>  
